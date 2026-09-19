@@ -1,0 +1,98 @@
+{
+  "source_file": "THE SPECIFIC RELIEF ACT, 1877.pdf",
+  "verified_by": "Sajid Ali",
+  "verified_date": "2026-09-19",
+
+  "meta": {
+    "jurisdiction": "Federal",
+    "enacting_authority": "Parliament",
+    "assent_authority": "President",
+    "short_title": "This Act may be called the Specific Relief Act, 1877.",
+    "long_title": ""
+  },
+
+  "section_count_total": 51,
+  "section_numbers_in_order": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "27-A",
+    "28",
+    "29",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "52",
+    "53",
+    "54",
+    "55",
+    "56",
+    "57"
+  ],
+
+  "schedules_present": ["Repealed"],
+
+  "verified_sections": [
+    {
+      "section_number": "8",
+      "why_chosen": "simple section, no nesting, sanity baseline",
+      "verbatim_text": "A person entitled to the possession of specific immoveable property may recover it in the manner prescribed by the Code of Civil Procedure2 ."
+    },
+    {
+      "section_number": "9",
+      "why_chosen": "contains multiple unnumbered paragraphs and tests section-body boundary handling",
+      "verbatim_text": "If any person is dispossessed without his consent of immoveable property otherwise than in due course of law, he or any person claiming through him may, by suit 4 * * * recover possession thereof, notwithstanding any other title that may be set up in such suit.\n\nNothing in this section shall bar any person from suing to establish his title to such property and to recover possession thereof.\n\nNo suit under this section shall be brought against 1 [the 2 [Federal Government] or any Provincial Government].\n\nNo appeal shall lie from any order or decree passed in any suit instituted under this section, nor shall any review of any such order or decree be allowed."
+    },
+    {
+      "section_number": "10",
+      "why_chosen": "contains two Explanations and multiple Illustrations, testing nested structural extraction",
+      "verbatim_text": "A person entitled to the possession of specific moveable property may recover the same in the manner prescribed by the Code of Civil Procedure3 .\n\nExplanation 1.__ A trustee may sue under this section for the possession of property to the beneficial interest in which the person for whom he is trustee is entitled.\n\nExplanation 2.__ A special or temporary right to the present possession of property is sufficient to support a suit under this section.\n\nIllustrations\n\n(a)\n\nA bequeaths land to B for his life, with remainder to C. A dies. B enters on the land, but C, without B’s consent, obtains possession of the title deeds. B may recover them from C.\n\n(b)\n\nA pledges certain Jewels to B to secure a loan. B disposes of them before he is entitled to do so. A, without having paid or tendered the amount of the loan, sues B for possession of the jewels. The suit should be dismissed, as A is not entitled to their possession, whatever right he may have to secure their safe custody.\n\n(c)\n\nA receives a letter addressed to him by B. B gets back the letter without A’s consent. A has such a property therein as entitles him to recover it from B.\n\n(d)\n\nA deposit books and papers for safe custody with B. B loses them and C finds them, but refuses to deliver them to B when demanded. B may recover them from C, subject to C’s right, if any, under section 168 of the Contract Act, 1872 (IX of 1872).\n\n(e)\n\nA, a warehouse-keeper, is charged with the delivery of certain goods to Z, which B takes out of A’s possession. A may sue B for the goods."
+    }
+  ],
+  "known_issues": [
+    {
+      "location": "page 4, Sections 45-51",
+      "note": "Sections 45 to 51 are explicitly marked '[Omitted.]'; the Contents does not provide individual section entries for these numbers."
+    },
+    {
+      "location": "page 4, Section 53",
+      "note": "The entry contains both 'Temporary injunctions.' and 'Perpetual injunctions.' without a separate section number between them; the latter corresponds to the heading of Section 54."
+    }
+  ]
+}

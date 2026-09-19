@@ -1,0 +1,123 @@
+{
+  "source_file": "PRPA2009.pdf",
+  "verified_by": "Sajid Ali",
+  "verified_date": "2026-09-19",
+  "meta": {
+    "jurisdiction": "Punjab",
+    "enacting_authority": "Provincial Assembly of the Punjab",
+    "assent_authority": "Governor of the Punjab",
+    "short_title": "This Act may be cited as the Punjab Rented Premises Act 2009.",
+    "long_title": "An Act to regulate the relationship of landlord and tenant in respect of rented premises."
+  },
+  "section_count_total": 36,
+  "section_numbers_in_order": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "36"
+  ],
+  "schedules_present": [
+    "SCHEDULE"
+  ],
+  "verified_sections": [
+    {
+      "section_number": "3",
+      "why_chosen": "Simple section with no subsections; tests basic section boundary and text extraction.",
+      "verbatim_text": "Exemption.- The Govemment may, for reasons to be recorded in writing and by notification in the official Gazette, direct that all or any of the provisions of this Act shall not apply to any class of premises or to any premises in any specified area."
+    },
+    {
+      "section_number": "7",
+      "why_chosen": "Contains three numbered subsections; tests subsection hierarchy and preservation of subsection boundaries.",
+      "verbatim_text": "Payment of rent.- (1) A tenant shall pay or tender the rent to the landlord in the mode and by the date mentioned in the tenancy agreement. (2) If the date of payment is not mentioned in the tenancy agreement, a tenant shall pay or tender the rent not later than tenth day of the following month. (3) If the mode of payment is not mentioned in the tenancy agreement, a tenant shall pay or tender the rent to the landlord through money order or deposit in the bank account of the landlord.",
+      "subsections": [
+        {
+          "subsection_number": "(1)",
+          "verbatim_text": "A tenant shall pay or tender the rent to the landlord in the mode and by the date mentioned in the tenancy agreement.",
+          "provisos": []
+        },
+        {
+          "subsection_number": "(2)",
+          "verbatim_text": "If the date of payment is not mentioned in the tenancy agreement, a tenant shall pay or tender the rent not later than tenth day of the following month.",
+          "provisos": []
+        },
+        {
+          "subsection_number": "(3)",
+          "verbatim_text": "If the mode of payment is not mentioned in the tenancy agreement, a tenant shall pay or tender the rent to the landlord through money order or deposit in the bank account of the landlord.",
+          "provisos": []
+        }
+      ]
+    },
+    {
+      "section_number": "21",
+      "why_chosen": "Contains an explicit reference to the Schedule in subsection (1); tests schedule reference detection and linking.",
+      "verbatim_text": "Appearance of parties and consequences of non-appearance.- (1) If an application under this Act other than application for deposit of rent is filed, the Rent Tribunal shall issue notice to the respondent in the form prescribed in the Schedule, for appearance of the respondent on a date not later than ten days through process server, registered post acknowledgement due and courier service. (2) A notice under sub-section (1) shall be accompanied by copies of the application and the documents annexed with the application. (3) If the respondent fails to appear and the Rent Tribunal is satisfied that- (a) the notice has not been served on the respondent or the respondent is willfully avoiding the service of the notice, the Rent Tribunal may direct service of the notice by: (i) affixing a copy of the notice at some conspicuous part of the rented premises or residence of the respondent; or (ii) publication in the press, electronic media or any other mode; and (b) the notice has been served, the Rent Tribunal may proceed ex-parte and pass the final order. (4) If an ex-parte order is passed against a respondent, the respondent may, within ten days from the date of knowledge, apply to the Rent Tribunal for setting aside the ex-parte order along with an application for leave to contest. (5) If the respondent shows a sufficient cause for his non appearance, the Rent Tribunal may set aside the ex-parte order on such terms as it may deems fit. (6) The parties may appear in person or through a recognized agent in the Rent Tribunal. (7) If on a date fixed, the applicant fails to appear, the Rent Tribunal may dismiss the application. (8) If an application has been dismissed. in default of the appearance of an applicant and an application for restoration of the same is made within thirty days of the dismissal order, the Rent Tribunal may restore the application on such terms as it may deem appropriate.",
+      "schedule_ref": "SCHEDULE"
+    }
+  ],
+  "known_issues": [
+    {
+      "location": "Section 2, definition (f)",
+      "note": "OCR text contains '(f).' as the definition marker."
+    },
+    {
+      "location": "Section 2, definition (l)",
+      "note": "OCR text contains '(1)' as the definition marker."
+    },
+    {
+      "location": "Section 3",
+      "note": "OCR text contains 'Govemment' rather than 'Government'."
+    },
+    {
+      "location": "Section 16",
+      "note": "OCR text contains 'Govermment' rather than 'Government'."
+    },
+    {
+      "location": "Section 19",
+      "note": "OCR text contains 'a-rented premises'."
+    },
+    {
+      "location": "Section 20",
+      "note": "OCR text contains 'Applicátion' and 'for-deposit'."
+    },
+    {
+      "location": "Section 21",
+      "note": "OCR text contains 'dismissed. in default'."
+    },
+    {
+      "location": "Pages 1591-1598",
+      "note": "OCR text contains Gazette headers, page numbers, and other page artefacts interleaved with the statutory text."
+    }
+  ]
+}

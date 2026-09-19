@@ -1,0 +1,122 @@
+{
+  "source_file": "SRPO1979.pdf",
+  "verified_by": "Sajid Ali",
+  "verified_date": "2026-09-19",
+  "meta": {
+    "jurisdiction": "Sind",
+    "enacting_authority": "Governor of Sind",
+    "assent_authority": null,
+    "short_title": "This Ordinance may be called the\nSind Rented Premises Ordinance, 1979.",
+    "long_title": "An Ordinance to make effective provisions for regulation of relations between landlords and tenants and protect their interests in respect of rented premises within urban areas."
+  },
+
+  "section_count_total": 28,
+  "section_numbers_in_order": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "15-A",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "21-A",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27"
+  ],
+  "schedules_present": null,
+  "verified_sections": [
+    {
+      "section_number": "7",
+      "why_chosen": null,
+      "verbatim_text": "7. Higher rent not chargeable. No landlord shall charge or receive rent in\nrespect of any premises at the rate higher than that mutually agreed upon by the parties, and, if the\nfair rent has been fixed by the Controller in respect of such premises, at the rate higher than the\nfair rent."
+    },
+    {
+      "section_number": "4",
+      "why_chosen": null,
+      "verbatim_text": "4. Controllers. (1) Government may appoint one or more Controllers in any\ndistrict and if more than one Controller is appointed in the same district Government shall define\nthe local limits within which each of such Controllers shall exercise jurisdiction:\nProvided that the Controllers working immediately before coming into force of this\nOrdinance shall continue to exercise their respective territorial jurisdiction until it has been altered\nby Government.\n(2) No person shall be appointed as a Controller unless he has worked or, has been\nworking, as a Civil Judge or 2\n[***], for not less than three years.\n3\n[(3***)]"
+    },
+    {
+      "section_number": "22",
+      "why_chosen": null,
+      "verbatim_text": "16[22. 1 [Execution of orders.] Final order passed under this Ordinance shall be\nexecuted by the Controller and all questions arising between parties and relating to the execution,\ndischarge or satisfaction the order shall be determined by the Controller and not by a separate suit.\nExplanation: - In the execution proceedings relating to the order of ejectment, no payment,\ncompromise or agreement shall be valid unless such payment, compromise or agreement is made\nbefore or with the permission of the authority passing the order.]"
+    }
+  ],
+  
+  "known_issues": [
+    {
+      "location": "Contents",
+      "note": "Section 6 is absent from the Contents."
+    },
+    {
+      "location": "Contents",
+      "note": "Sections 15-A, 21-A, and 22 appear in the body but are absent from the Contents."
+    },
+    {
+      "location": "Section 2",
+      "note": "The numbering in the supplied text proceeds from (i) to (k); no (j) entry appears."
+    },
+    {
+      "location": "Section 3",
+      "note": "The supplied text contains the bracketed text [************************] immediately after subsection (1)."
+    },
+    {
+      "location": "Section 4",
+      "note": "The supplied text contains the bracketed text [***] and the text [(3***)]."
+    },
+    {
+      "location": "Section 6",
+      "note": "The supplied text explicitly states [6. Omitted]."
+    },
+    {
+      "location": "Section 14",
+      "note": "The supplied text contains the bracketed text [(4) ****]."
+    },
+    {
+      "location": "Section 15",
+      "note": "The supplied text contains the bracketed text [(i) *******************]."
+    },
+    {
+      "location": "Section 15-A",
+      "note": "The supplied text contains the text 10[15-A] 1 [(\"Penalty for use of premises other than personal use.] 11[."
+    },
+    {
+      "location": "Section 19",
+      "note": "The supplied text contains \"Compensation for vexatious eviction.\" within subsection (2)."
+    },
+    {
+      "location": "Section 21",
+      "note": "The supplied text contains subsections (1-A), (1-B), (1-C), (1-D), and (1-E) inside an amendment bracket."
+    },
+    {
+      "location": "Section 21-A",
+      "note": "The supplied text contains the section number 21-A inside an amendment bracket."
+    },
+    {
+      "location": "Section 22",
+      "note": "The supplied text contains 16[22. 1 [Execution of orders.] and ends the provision with a closing bracket ]."
+    },
+    {
+      "location": "Section 27",
+      "note": "The supplied text contains subsections (3) and (4) inside an amendment bracket."
+    }
+  ]
+
+}
