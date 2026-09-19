@@ -70,6 +70,11 @@
 
   "verified_sections": [
     {
+      "section_number": "2",
+      "why_chosen": "Repeal of enactments",
+      "verbatim_text": "Rep. by the Amending Act, 1891 (XII of 1891)"
+    },
+    {
       "section_number": "8",
       "why_chosen": "simple section, no nesting, sanity baseline",
       "verbatim_text": "A person entitled to the possession of specific immoveable property may recover it in the manner prescribed by the Code of Civil Procedure2 ."

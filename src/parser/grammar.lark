@@ -1,0 +1,29 @@
+start: chapter_heading
+	| part_heading
+	| section_marker
+	| subsection_marker
+	| clause_marker
+	| subclause_marker
+	| proviso_marker
+	| explanation_marker
+	| text_block
+
+chapter_heading: CHAPTER
+part_heading: PART
+section_marker: SECTION
+subsection_marker: SUBSECTION
+clause_marker: CLAUSE
+subclause_marker: SUBCLAUSE
+proviso_marker: PROVISO
+explanation_marker: EXPLANATION
+text_block: TEXT
+
+CHAPTER.8: /^\s*CHAPTER\s+[IVXLCDM]+(?:\.?[\s\S]*)?/
+PART.7: /^\s*PART\s+[IVXLCDM]+(?:\.?[\s\S]*)?/
+SECTION.6: /^\s*\[?\d+\s*(?:-?\s*[A-Za-z])?\s*\.[\s\S]*/
+SUBSECTION.5: /^\s*\(\d+\)[\s\S]*/
+CLAUSE.4: /^\s*\([a-h]\)[\s\S]*/
+SUBCLAUSE.3: /^\s*\([ivx]+\)[\s\S]*/
+PROVISO.2: /^\s*Provided\s+that\b.*/
+EXPLANATION.2: /^\s*Explanation\b[\s\S]*/
+TEXT: /[\s\S]+/

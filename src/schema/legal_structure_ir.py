@@ -119,12 +119,12 @@ class Flag(BaseModel):
 
 
 class Act(BaseModel):
-	model_config = ConfigDict(extra="forbid")
-
-	meta: ActMeta
-	preamble: str = ""
-	definitions: list[str] = Field(default_factory=list)
-	chapters: list[Chapter] = Field(default_factory=list)
-	sections: list[Section] = Field(default_factory=list)
-	schedules: list[Schedule] = Field(default_factory=list)
-	flags: list[Flag] = Field(default_factory=list)
+    model_config = ConfigDict(extra="forbid")
+    meta: ActMeta
+    preamble: str = ""
+    definitions: list[str] = Field(default_factory=list)
+    parts: list[Part] = Field(default_factory=list)
+    chapters: list[Chapter] = Field(default_factory=list)
+    sections: list[Section] = Field(default_factory=list)
+    schedules: list[Schedule] = Field(default_factory=list)
+    flags: list[Flag] = Field(default_factory=list)

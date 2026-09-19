@@ -58,3 +58,37 @@ and provenance. The existing Normalized Block IR was preserved unchanged.
 
 Added a placeholder composition test in `tests/test_schema.py`. No grammar,
 parser, or fixture parsing was added.
+
+### Stage 3 - grammar and parser (federal fixture only, 2026-09-19)
+
+Added the fixture-grounded grammar in `src/parser/grammar.lark` and the
+deterministic Block IR parser in `src/parser/legal_parser.py`. The parser was
+tested only with `PK-SRA1877_Source.blocks.json` and preserves Section
+provenance, creates the Act/Chapter/Part hierarchy, nests observed
+subsections/provisos/explanations, and moves word-digit artifacts such as
+`Procedure2` into `amendment_history`.
+
+Patterns derived from the federal fixture:
+
+- Pages 1-4 are contents; operative parsing starts at the block containing
+	the Act long title, `An Act to define and amend...`.
+- Section markers, marginal notes, and first body text are commonly fused in
+	one block; the first period after the marker separates the marginal note.
+- A body block labeled `39.` has the Section 9 marginal title, so it is
+	reconciled to Section 9 and flagged as an ambiguous boundary.
+- Bold-italic `(a)`/`(b)` headings between sections are contents headings and
+	are skipped using their observed font metadata.
+- Numbered `Explanation 1.__` blocks and `Provided that...` blocks attach to
+	the current Section or preceding nested element.
+- Footnote blocks beginning with forms such as `1The original...`, `1See...`,
+	or `1Subs...` are excluded from Section body text.
+- Later headings such as `CHAPTER III` followed by `OF THE ...` and `PART III`
+	followed by `Of ...` are combined across adjacent blocks.
+
+Patterns guessed rather than proven from a broader corpus: the federal
+metadata values, the Act commencement date, the contents/body transition
+anchor, and the rule that bold-italic clause-shaped blocks are non-operative
+headings. Stage 2 has no Act-level `parts` field, so the fixture's top-level
+Part III is represented under the preceding Chapter VIII; this was not fixed
+by inventing a schema field. The parser has not been run against Punjab or
+Sindh fixtures, and no Stage 4 validation was started.
