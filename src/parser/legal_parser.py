@@ -40,6 +40,7 @@ WORD_DIGIT_RE = re.compile(r"\b([A-Za-z]+)(\d+)\b")
 PAGE_RE = re.compile(r"^Page\s+\d+\s+of\s+\d+$", re.I)
 FOOTNOTE_RE = re.compile(r"^\d+\s*(?:See\b|Subs\.|The original\b|But see\b|Omitted\b)", re.I)
 
+NEWLINE_KINDS = {"subsection_marker", "clause_marker", "subclause_marker", "proviso_marker", "explanation_marker"}
 
 def _block(value: NormalizedBlock | dict) -> NormalizedBlock:
 	return value if isinstance(value, NormalizedBlock) else NormalizedBlock.model_validate(value)
@@ -64,11 +65,16 @@ def _section_parts(text: str) -> tuple[str, str, str]:
 		return "", "", text.strip()
 	number = re.sub(r"\s+", "", match.group("number"))
 	rest = match.group("rest").strip()
+	if rest.startswith("["):
+		close_idx = rest.find("]")
+		if close_idx != -1:
+			marginal = rest[: close_idx + 1].strip()
+			body = rest[close_idx + 1 :].strip()
+			return number, marginal, body
 	if "." in rest:
 		marginal, body = rest.split(".", 1)
 		return number, marginal.strip(), body.strip()
 	return number, rest, ""
-
 
 def _provenance(block: NormalizedBlock) -> Provenance:
 	return Provenance(
@@ -100,8 +106,9 @@ def parse_blocks(blocks: Iterable[NormalizedBlock | dict]) -> Act:
 	body_start = next((index for index, block in enumerate(items) if _is_body_start(block)), 0)
 	contents = _contents_titles(items, body_start)
 	flags: list[Flag] = []
-	parts: list[Part] = []
+
 	chapters: list[Chapter] = []
+	parts: list[Part] = []
 	sections: list[Section] = []
 	current_chapter: Chapter | None = None
 	current_part: Part | None = None
@@ -130,8 +137,10 @@ def parse_blocks(blocks: Iterable[NormalizedBlock | dict]) -> Act:
 				chapter_number=chapter_match.group("number"),
 				chapter_title=chapter_match.group("title").strip(),
 			)
-			chapters.append(current_chapter)
-			current_part = None
+			if current_part is not None:
+				current_part.chapters.append(current_chapter)
+			else:
+				chapters.append(current_chapter)
 			pending_heading = "chapter" if not current_chapter.chapter_title else None
 			continue
 		if kind == "part_heading" and part_match:
@@ -139,18 +148,14 @@ def parse_blocks(blocks: Iterable[NormalizedBlock | dict]) -> Act:
 				part_number=part_match.group("number"),
 				part_title=part_match.group("title").strip(),
 			)
-			if current_chapter is not None:
-				current_chapter.parts.append(current_part)
-			else:
-				parts.append(current_part)
+			current_chapter = None
+			parts.append(current_part)
 			pending_heading = "part" if not current_part.part_title else None
 			continue
 
 		section_match = SECTION_RE.match(text)
 		if section_match and not TOC_RANGE_RE.match(text):
 			number, marginal, body = _section_parts(text)
-			# The fixture's body has a scanned/converted "39." marker for Section 9;
-			# its marginal title identifies the operative Section 9 entry.
 			for candidate, title in contents.items():
 				if candidate != number and title and marginal.lower() == title.lower():
 					flags.append(Flag(
@@ -171,10 +176,10 @@ def parse_blocks(blocks: Iterable[NormalizedBlock | dict]) -> Act:
 				provenance=[_provenance(block)],
 			)
 			section_body_blocks[id(current_section)] = [block]
-			if current_part is not None:
-				current_part.sections.append(current_section)
-			elif current_chapter is not None:
+			if current_chapter is not None:
 				current_chapter.sections.append(current_section)
+			elif current_part is not None:
+				current_part.sections.append(current_section)
 			else:
 				sections.append(current_section)
 			current_subsection = None
@@ -226,7 +231,10 @@ def parse_blocks(blocks: Iterable[NormalizedBlock | dict]) -> Act:
 			else:
 				current_section.explanations.append(explanation)
 
-		current_section.text = f"{current_section.text} {clean_text}".strip()
+		if kind in NEWLINE_KINDS and current_section.text:
+			current_section.text = f"{current_section.text}\n{clean_text}".strip()
+		else:
+			current_section.text = f"{current_section.text} {clean_text}".strip()
 
 	meta = ActMeta(
 		jurisdiction="Federal",
@@ -237,20 +245,20 @@ def parse_blocks(blocks: Iterable[NormalizedBlock | dict]) -> Act:
 		commencement_date="1877-05-01",
 	)
 	return Act(
-    meta=meta,
-    preamble="",
-    parts=parts,
-    chapters=chapters,
-    sections=sections,
-    flags=flags,
-    schedules=[
-        Schedule(
-            schedule_name="SCHEDULE",
-            schedule_title="Enactments Repealed",
-            content="[Repealed.]"
-        )
-    ],
-)
+		meta=meta,
+		preamble="",
+		parts=parts,
+		chapters=chapters,
+		sections=sections,
+		flags=flags,
+		schedules=[
+			Schedule(
+				schedule_name="SCHEDULE",
+				schedule_title="Enactments Repealed",
+				content="[Repealed.]"
+			)
+		],
+	)
 
 
 def flatten_section_text(section: Section) -> str:
@@ -266,22 +274,19 @@ if __name__ == "__main__":
 
     act = parse_blocks(data["blocks"])
 
-    by_number = {
-        section.section_number: section
-        for section in act.sections
-    }
+    by_number: dict[str, Section] = {}
 
+    def _collect(sections: list[Section]) -> None:
+        for section in sections:
+            by_number[section.section_number] = section
+
+    _collect(act.sections)
     for chapter in act.chapters:
-        by_number.update({
-            section.section_number: section
-            for section in chapter.sections
-        })
-
-        for part in chapter.parts:
-            by_number.update({
-                section.section_number: section
-                for section in part.sections
-            })
+        _collect(chapter.sections)
+    for part in act.parts:
+        _collect(part.sections)
+        for chapter in part.chapters:
+            _collect(chapter.sections)
 
     for verified in answer["verified_sections"]:
         section = by_number.get(verified["section_number"])

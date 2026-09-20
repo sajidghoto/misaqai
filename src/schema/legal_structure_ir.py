@@ -84,6 +84,7 @@ class Part(BaseModel):
 	part_number: str
 	part_title: str
 	sections: list[Section] = Field(default_factory=list)
+	chapters: list[Chapter] = Field(default_factory=list)
 
 
 class Chapter(BaseModel):
