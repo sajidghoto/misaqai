@@ -92,3 +92,87 @@ headings. Stage 2 has no Act-level `parts` field, so the fixture's top-level
 Part III is represented under the preceding Chapter VIII; this was not fixed
 by inventing a schema field. The parser has not been run against Punjab or
 Sindh fixtures, and no Stage 4 validation was started.
+
+### Stage 3 federal generalization (2026-09-21)
+
+Added `src/normalize/toc_filter.py` with `split_toc_and_body()`. The splitter
+retains TOC blocks separately and uses Section 1 marker structure, marker
+density, and relative candidate block length rather than an Act-specific
+phrase. Both CA1872 and PK-SRA1877_Source have a single leading TOC/body
+boundary; no post-body TOC island was observed in either Block IR fixture.
+
+The parser now consumes the filtered body and extracts only the operative
+short-title sentence. Formal titles are searched in pre-TOC blocks, and
+commencement remains `None` with an unresolved metadata flag rather than being
+fabricated. Federal jurisdiction, Parliament, and President remain fixed for
+this batch as requested.
+
+### Federal batch verification (2026-09-21)
+
+Re-ran the federal batch successfully after making Tesseract available on
+the Python PATH.
+
+- All seven federal Acts extracted and parsed successfully.
+- CPC1908 OCR completed successfully; the previous Tesseract error is resolved.
+- CA1872 contains all expected operative sections from the source.
+- CA1872 has no duplicate section numbers.
+- Sections 19A, 30A, 30B, and 30C are valid sections present in the source.
+- Full test suite passes: 7 passed.
+
+The CA1872 audit logic still needs its expected inventory updated to include
+19A, 30A, 30B, and 30C. The parser output should not remove these sections.
+
+### Stage 4 - deterministic Legal Structure IR validator (2026-09-21)
+
+Implemented `src/validator/validator.py` with structured validation reports.
+The validator checks required Act metadata, duplicate and out-of-order section
+boundaries, numbering gaps as warnings, nested numbering identifiers,
+provenance completeness, empty nested text, and unresolved section or schedule
+references. It preserves source numbering and never silently renumbers gaps.
+
+Added focused tests in `tests/test_validator.py`; all three validator tests
+pass.
+
+Applied to the regenerated federal Act outputs:
+
+- CA1872: valid, 0 errors, 4 warnings.
+- SRA1877: valid, 0 errors, 1 warning.
+- QSO1984: valid, 0 errors, 5 warnings.
+- CPC1908: invalid, with duplicate and out-of-order section boundaries.
+- REGA1908: invalid, duplicate Section 50.
+- STA1899: invalid, out-of-order Section 14 boundary.
+- TPA1882: invalid, duplicate Section 70 and an out-of-order 63A boundary.
+
+Stage 4 is implemented but the federal batch is not yet fully validated.
+The next parser work should address the CPC1908, REGA1908, STA1899, and
+TPA1882 boundary findings before pipeline wiring and RAG chunking.
+
+### Stage 3 boundary fixes and Stage 4 federal validation (2026-09-22)
+
+Resolved the remaining federal parser boundary issues:
+
+- CPC1908 now selects the operative Section 1/body boundary using the
+	short-title evidence instead of the longest numbered block. Later form
+	numbering no longer creates duplicate Act sections.
+- Same-number page continuations, including Registration Act Section 50, are
+	merged into one Section while retaining all provenance records.
+- Lower-number restarts from appendix/form material are excluded from the
+	operative section hierarchy.
+- Section suffix ordering now treats values such as 63A correctly after 63
+	and before 64.
+- Empty template clauses are retained and reported as warnings rather than
+	structural validation errors.
+
+Added focused regressions for CPC body detection, CPC metadata and numbering,
+and REGA Section 50 continuation handling.
+
+Current verification:
+
+- All seven federal Act outputs validate with zero errors.
+- Remaining findings are warnings only: numbering gaps, unresolved textual
+	references, and source/template artifacts requiring review.
+- Full test suite: **13 passed**.
+
+The federal parser and deterministic validator gate is now complete. The next
+stage is pipeline wiring and Section-level RAG chunk emission, with nested
+legal structure and full provenance retained as metadata.
