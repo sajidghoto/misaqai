@@ -1,0 +1,118 @@
+[
+  {
+    "query": "Can a court set aside a contract obtained through undue influence?",
+    "expected_chunk_id": "CA1872_s19A"
+  },
+  {
+    "query": "When is an agreement void because both parties were mistaken about an important fact?",
+    "expected_chunk_id": "CA1872_s20"
+  },
+  {
+    "query": "What happens when the parties make a mistake about the law?",
+    "expected_chunk_id": "CA1872_s21"
+  },
+  {
+    "query": "What happens when only one party is mistaken about a fact?",
+    "expected_chunk_id": "CA1872_s22"
+  },
+  {
+    "query": "Who is competent to transfer property under section 7 of the Transfer of Property Act, 1882?",
+    "expected_chunk_id": "TPA1882_s7"
+  },
+  {
+    "query": "What interests and legal incidents pass to the transferee when property is transferred under section 8 of the Transfer of Property Act, 1882?",
+    "expected_chunk_id": "TPA1882_s8"
+  },
+  {
+    "query": "When is a condition absolutely restraining the transferee from transferring or disposing of property void under section 10 of the Transfer of Property Act, 1882?",
+    "expected_chunk_id": "TPA1882_s10"
+  },
+  {
+    "query": "What is the rule against perpetuity under section 14 of the Transfer of Property Act, 1882?",
+    "expected_chunk_id": "TPA1882_s14"
+  },
+  {
+    "query": "When does an interest created on a transfer of property fail because of an invalid condition under section 25 of the Transfer of Property Act, 1882?",
+    "expected_chunk_id": "TPA1882_s25"
+  },
+  {
+    "query": "What does section 4 of the Code of Civil Procedure, 1908 provide about special or local laws and special jurisdiction or procedure?",
+    "expected_chunk_id": "CPC1908_s4"
+  },
+  {
+    "query": "Which courts have jurisdiction to try suits of a civil nature under section 9 of the Code of Civil Procedure, 1908?",
+    "expected_chunk_id": "CPC1908_s9"
+  },
+  {
+    "query": "When is a court required to stay the trial of a suit under section 10 of the Code of Civil Procedure, 1908?",
+    "expected_chunk_id": "CPC1908_s10"
+  },
+  {
+    "query": "When does section 11 of the Code of Civil Procedure, 1908 prevent a court from trying a suit or issue?",
+    "expected_chunk_id": "CPC1908_s11"
+  },
+  {
+    "query": "Where may a suit concerning immoveable property be instituted under section 16 of the Code of Civil Procedure, 1908?",
+    "expected_chunk_id": "CPC1908_s16"
+  },
+  {
+    "query": "When is a fact considered proved, disproved, or not proved under the Qanun-e-Shahadat Order, 1984?",
+    "expected_chunk_id": "QSO1984_s2"
+  },
+  {
+    "query": "Who is competent to testify as a witness under the Qanun-e-Shahadat Order, 1984?",
+    "expected_chunk_id": "QSO1984_s3"
+  },
+  {
+    "query": "What communications between spouses are protected from disclosure under the Qanun-e-Shahadat Order, 1984?",
+    "expected_chunk_id": "QSO1984_s5"
+  },
+  {
+    "query": "What professional communications between an advocate and client are protected from disclosure under the Qanun-e-Shahadat Order, 1984?",
+    "expected_chunk_id": "QSO1984_s9"
+  },
+  {
+    "query": "What does the Qanun-e-Shahadat Order, 1984 provide regarding the relevancy of facts forming part of the same transaction?",
+    "expected_chunk_id": "QSO1984_s19"
+  },
+  {
+    "query": "When is an adhesive stamp treated as unstamped under the Stamp Act, 1899?",
+    "expected_chunk_id": "STA1899_s12"
+  },
+  {
+    "query": "How must an instrument written on paper bearing an impressed stamp be written under section 13 of the Stamp Act, 1899?",
+    "expected_chunk_id": "STA1899_s13"
+  },
+  {
+    "query": "Can a second instrument chargeable with duty be written on the same stamped paper under section 14 of the Stamp Act, 1899?",
+    "expected_chunk_id": "STA1899_s14"
+  },
+  {
+    "query": "What is the effect of writing an instrument contrary to section 13 or section 14 of the Stamp Act, 1899?",
+    "expected_chunk_id": "STA1899_s15"
+  },
+  {
+    "query": "When must an instrument chargeable with duty and executed in Pakistan be stamped under section 17 of the Stamp Act, 1899?",
+    "expected_chunk_id": "STA1899_s17"
+  },
+  {
+    "query": "What documents are required to be registered under section 17 of the Registration Act, 1908?",
+    "expected_chunk_id": "REGA1908_s17"
+  },
+  {
+    "query": "Which documents are exempt from compulsory registration under section 17 of the Registration Act, 1908?",
+    "expected_chunk_id": "REGA1908_s17"
+  },
+  {
+    "query": "What documents may be registered optionally under section 18 of the Registration Act, 1908?",
+    "expected_chunk_id": "REGA1908_s18"
+  },
+  {
+    "query": "What is the time limit for presenting a document for registration under section 23 of the Registration Act, 1908?",
+    "expected_chunk_id": "REGA1908_s23"
+  },
+  {
+    "query": "Where should documents relating to immovable property be presented for registration under section 28 of the Registration Act, 1908?",
+    "expected_chunk_id": "REGA1908_s28"
+  }
+]

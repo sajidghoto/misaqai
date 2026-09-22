@@ -173,6 +173,86 @@ Current verification:
 	references, and source/template artifacts requiring review.
 - Full test suite: **13 passed**.
 
+### Requested Act validator verification (2026-09-22)
+
+Implemented the public `validate(act: Act) -> list[str]` contract in
+`src/validator/validator.py`. It reports incomplete titles as warnings,
+duplicate section numbers per container, unresolved schedule references,
+missing Section provenance, invalid proviso/explanation nesting, and
+numbering gaps. Range-repeal entries are reported separately and do not hide
+uncovered gaps.
+
+Validation table for the seven generated `output/*.act.json` files (issue
+count includes warnings; first three issues shown):
+
+| Act | Status | Issue count | First three issues |
+| --- | --- | ---: | --- |
+| CA1872 | PASS | 0 | - |
+| CPC1908 | FAIL | 10 | `act.part[0]`: 24 to 125; `act.part[1]`: 47 to 49; `act.part[1]`: 56 to 58 |
+| QSO1984 | PASS | 0 | - |
+| REGA1908 | PASS | 0 | - |
+| SRA1877 | PASS | 0 | - |
+| STA1899 | FAIL | 1 | `act.chapter[2]`: 39 to 41 |
+| TPA1882 | FAIL | 5 | `act.chapter[2]`: 62 to 70; `act.chapter[2]`: 73 to 76; `act.chapter[2]`: 84 to 91 |
+
+All seven Acts loaded successfully against the schema. No duplicate section,
+missing provenance, unresolved schedule reference, or invalid nesting issues
+were found. The remaining findings are numbering-gap warnings for manual
+review; no range-repeal entries occur in this batch.
+
 The federal parser and deterministic validator gate is now complete. The next
 stage is pipeline wiring and Section-level RAG chunk emission, with nested
 legal structure and full provenance retained as metadata.
+
+### Stage 5 - Section-level chunking for RAG (2026-09-22)
+
+Implemented `src/rag/chunking.py` to emit one flat chunk per Section while
+preserving the full Section text, hierarchy path, act metadata, category, and
+provenance. Section text is kept as the atomic retrieval payload; nested
+subsections, clauses, provisos, and explanations remain metadata on the
+Section instead of becoming standalone chunks.
+
+Chunk output files were generated under `output/chunks/` for the seven federal
+Acts:
+
+- `CA1872.chunks.json` — 195 chunks; average text length 685.37; no suspiciously
+  short sections.
+- `CPC1908.chunks.json` — 128 chunks; average text length 5031.88; 5 flagged
+  suspiciously short sections (`45`, `154`, `155`, `156`, `7`).
+- `QSO1984.chunks.json` — 165 chunks; average text length 930.56; no suspiciously
+  short sections.
+- `REGA1908.chunks.json` — 90 chunks; average text length 1103.14; no
+  suspiciously short sections.
+- `SRA1877.chunks.json` — 50 chunks; average text length 1425.98; no
+  suspiciously short sections.
+- `STA1899.chunks.json` — 79 chunks; average text length 2182.81; no
+  suspiciously short sections.
+- `TPA1882.chunks.json` — 126 chunks; average text length 1188.98; 4 flagged
+  suspiciously short sections (`80`, `97`, `99`, `135A`).
+
+These short sections are preserved and flagged as `suspiciously_short_text`
+without being removed from the corpus, allowing manual review for repealed or
+empty template entries.
+
+### Stage 6 - local embedding benchmark harness (2026-09-22)
+
+Added `scripts/embedding_benchmark.py` to benchmark the three requested local
+sentence-transformers embedding models against the real corpus in
+`output/chunks/*.chunks.json`.
+
+What it does:
+
+- Loads all 7 chunk files into a single corpus.
+- Accepts a user-supplied JSON eval file with `query` and
+  `expected_chunk_id` pairs.
+- Embeds the full corpus and each query for each model.
+- Retrieves the top-5 nearest chunks by cosine similarity.
+- Reports hit/miss and correct-answer rank for each query.
+- Prints a comparison table including hit rate, average rank of the correct
+  answer, and embedding time per chunk.
+
+No vector store or retrieval pipeline was added; this remains a throwaway
+benchmark script only.
+
+Status: script is written and syntax-checked. It is intentionally not executed
+until the hand-labeled 10-15 query evaluation set is provided by the user.
